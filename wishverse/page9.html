@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Love Universe - Page 9</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background:
+                radial-gradient(circle at 20% 20%, #4b176b 0%, transparent 30%),
+                radial-gradient(circle at 80% 80%, #65164f 0%, transparent 30%),
+                #100018;
+            color: white;
+            font-family: Georgia, serif;
+            text-align: center;
+        }
+
+        /* Stars */
+
+        .star {
+            position: fixed;
+            color: #ffffff;
+            font-size: 14px;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        .s1 { top: 12%; left: 12%; }
+        .s2 { top: 25%; right: 15%; animation-delay: .5s; }
+        .s3 { bottom: 20%; left: 18%; animation-delay: 1s; }
+        .s4 { bottom: 12%; right: 12%; animation-delay: 1.5s; }
+        .s5 { top: 45%; left: 7%; animation-delay: .8s; }
+
+        @keyframes twinkle {
+            from {
+                opacity: .2;
+                transform: scale(.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1.4);
+            }
+        }
+
+        /* Header */
+
+        header {
+            width: 100%;
+            padding: 25px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            letter-spacing: 3px;
+            font-size: 13px;
+            color: #e9c9f5;
+        }
+
+        /* Main */
+
+        .page {
+            min-height: calc(100vh - 70px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .small {
+            color: #e6a9dc;
+            letter-spacing: 4px;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(38px, 7vw, 70px);
+            line-height: 1.05;
+            font-weight: normal;
+            margin: 0;
+        }
+
+        h1 span {
+            color: #f39adf;
+            font-style: italic;
+        }
+
+        .subtitle {
+            max-width: 550px;
+            color: #d8bfdc;
+            font-size: 17px;
+            line-height: 1.8;
+            margin-top: 25px;
+        }
+
+        /* Gift */
+
+        .gift-area {
+            margin-top: 45px;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+        }
+
+        .gift {
+            width: 150px;
+            height: 125px;
+            background: linear-gradient(145deg, #d84d9c, #7c2c82);
+            border-radius: 12px;
+            position: relative;
+            margin: auto;
+            box-shadow:
+                0 0 25px #d84d9c,
+                0 0 60px rgba(216, 77, 156, .5);
+            transition: .4s;
+        }
+
+        .gift:hover {
+            transform: translateY(-12px) scale(1.05);
+            box-shadow:
+                0 0 35px #ff8ed8,
+                0 0 90px rgba(216, 77, 156, .7);
+        }
+
+        .gift::before {
+            content: "";
+            position: absolute;
+            width: 28px;
+            height: 125px;
+            background: #ffd1ef;
+            left: 61px;
+            top: 0;
+        }
+
+        .gift::after {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 25px;
+            background: #ffd1ef;
+            left: 0;
+            top: 25px;
+        }
+
+        .bow {
+            position: absolute;
+            top: -35px;
+            left: 45px;
+            width: 60px;
+            height: 45px;
+        }
+
+        .bow::before,
+        .bow::after {
+            content: "";
+            position: absolute;
+            width: 38px;
+            height: 30px;
+            border: 8px solid #ffd1ef;
+            border-radius: 50%;
+        }
+
+        .bow::before {
+            left: -8px;
+            transform: rotate(25deg);
+        }
+
+        .bow::after {
+            right: -8px;
+            transform: rotate(-25deg);
+        }
+
+        .click-text {
+            margin-top: 25px;
+            color: #f0b6e5;
+            letter-spacing: 2px;
+            font-size: 14px;
+        }
+
+        /* Hidden surprise */
+
+        .surprise {
+            display: none;
+            max-width: 650px;
+            animation: appear 1.5s ease;
+        }
+
+        #open:target ~ .page .intro {
+            display: none;
+        }
+
+        #open:target ~ .page .surprise {
+            display: block;
+        }
+
+        #open:target ~ .page .gift-area {
+            display: none;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .heart {
+            font-size: 75px;
+            animation: heartbeat 1.4s infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.18);
+            }
+        }
+
+        .surprise h2 {
+            font-size: 42px;
+            font-weight: normal;
+            color: #ffb4e9;
+            margin: 10px 0 25px;
+        }
+
+        .message {
+            color: #ead7e9;
+            font-size: 18px;
+            line-height: 2;
+        }
+
+        .forever {
+            margin-top: 25px;
+            font-size: 25px;
+            color: #ffffff;
+            font-style: italic;
+        }
+
+        /* Continue */
+
+        .continue {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 14px 30px;
+            border: 1px solid #e99bd9;
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 1px;
+            background: rgba(255,255,255,.05);
+            transition: .3s;
+        }
+
+        .continue:hover {
+            background: #c64c9f;
+            box-shadow: 0 0 25px #d95ab0;
+            transform: translateY(-3px);
+        }
+
+        @media(max-width:600px) {
+
+            header {
+                padding: 20px;
+            }
+
+            .subtitle {
+                font-size: 15px;
+            }
+
+            .surprise h2 {
+                font-size: 32px;
+            }
+
+            .message {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="star s1">✦</div>
+    <div class="star s2">✧</div>
+    <div class="star s3">✦</div>
+    <div class="star s4">✧</div>
+    <div class="star s5">✦</div>
+
+    <header>
+        <div>LOVE UNIVERSE</div>
+        <div>09 / 10</div>
+    </header>
+
+    <!-- This activates the surprise -->
+    <div id="open"></div>
+
+    <main class="page">
+
+        <!-- Before opening -->
+
+        <section class="intro">
+
+            <div class="small">✦ ONE LAST LITTLE GIFT ✦</div>
+
+            <h1>
+                If I could give<br>
+                you one thing...
+            </h1>
+
+            <p class="subtitle">
+                It wouldn't be something you could hold.
+                It would be something that stays with you,
+                wherever life takes you. 💗
+            </p>
+
+        </section>
+
+        <!-- Gift -->
+
+        <a href="#open" class="gift-area">
+
+            <div class="gift">
+
+                <div class="bow"></div>
+
+            </div>
+
+            <div class="click-text">
+                ✦ Open the gift ✦
+            </div>
+
+        </a>
+
+        <!-- Surprise -->
+
+        <section class="surprise">
+
+            <div class="heart">💗</div>
+
+            <h2>
+                My forever.
+            </h2>
+
+            <div class="message">
+
+                No matter how many pages<br>
+                this universe has...
+
+                <br><br>
+
+                my favorite chapter<br>
+                will always be <b>you.</b>
+
+            </div>
+
+            <div class="forever">
+                “Somewhere between all the moments,
+                I found my home in you.” ∞
+            </div>
+
+            <a href="page10.html" class="continue">
+                One last page → ✨
+            </a>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

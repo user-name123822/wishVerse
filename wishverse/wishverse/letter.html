@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Letter For You | Love Universe</title>
+
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            #30204b 0%,
+            #171426 45%,
+            #07080d 100%
+        );
+
+    color: white;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   STARS
+========================= */
+
+.stars {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 85px 85px;
+
+    opacity: .35;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    position: relative;
+
+    z-index: 10;
+
+    width: 100%;
+
+    padding: 28px 45px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.logo {
+    font-size: 15px;
+
+    font-weight: bold;
+
+    letter-spacing: 4px;
+}
+
+.page-number {
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    opacity: .55;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+    position: relative;
+
+    z-index: 5;
+
+    min-height: calc(100vh - 80px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 15px 20px 80px;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.eyebrow {
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color: #d9a8ed;
+
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: clamp(48px, 7vw, 75px);
+
+    line-height: 1.05;
+
+    font-weight: normal;
+
+    font-style: italic;
+
+    margin-bottom: 35px;
+}
+
+h1 span {
+    color: #e5a6d1;
+}
+
+
+/* =========================
+   ENVELOPE STAGE
+========================= */
+
+.envelope-stage {
+    position: relative;
+
+    width: 360px;
+
+    height: 270px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-end;
+}
+
+
+/* =========================
+   LETTER
+========================= */
+
+.letter {
+    position: absolute;
+
+    width: 290px;
+
+    height: 300px;
+
+    left: 50%;
+
+    bottom: 35px;
+
+    transform:
+        translateX(-50%)
+        translateY(40px);
+
+    background: #fffafa;
+
+    color: #342431;
+
+    padding: 25px;
+
+    text-align: left;
+
+    border-radius: 5px;
+
+    opacity: 0;
+
+    z-index: 2;
+
+    transition:
+        transform 1s ease,
+        opacity .8s ease;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.6);
+}
+
+.letter h2 {
+    color: #713c63;
+
+    font-size: 22px;
+
+    font-style: italic;
+
+    margin-bottom: 15px;
+}
+
+.letter p {
+    font-size: 12px;
+
+    line-height: 1.55;
+
+    margin-bottom: 10px;
+}
+
+.signature {
+    color: #713c63;
+
+    font-style: italic;
+
+    text-align: right;
+
+    margin-top: 15px;
+}
+
+
+/* =========================
+   ENVELOPE
+========================= */
+
+.envelope {
+    position: relative;
+
+    width: 340px;
+
+    height: 190px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #85548c,
+            #5f3a69
+        );
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.6),
+        0 0 30px rgba(210,130,230,.2);
+
+    transition:
+        transform 1s ease,
+        opacity 1s ease;
+}
+
+
+/* =========================
+   ENVELOPE FLAP
+========================= */
+
+.flap {
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 115px;
+
+    background: #a5689d;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
+
+    transform-origin: top center;
+
+    transition:
+        transform .9s ease;
+
+    z-index: 12;
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   FRONT
+========================= */
+
+.front {
+    position: absolute;
+
+    inset: 0;
+
+    background: #75477b;
+
+    clip-path:
+        polygon(
+            0 0,
+            50% 55%,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
+
+    border-radius: 8px;
+
+    z-index: 13;
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   HEART
+========================= */
+
+.heart {
+    position: absolute;
+
+    width: 58px;
+
+    height: 58px;
+
+    left: 50%;
+
+    top: 68px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background: #e4a4d0;
+
+    color: #71395f;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 24px;
+
+    z-index: 20;
+
+    box-shadow:
+        0 0 25px rgba(235,150,215,.45);
+
+    transition:
+        opacity .5s ease,
+        transform .5s ease;
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   HINT
+========================= */
+
+.hint {
+    margin-top: 18px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    opacity: .55;
+}
+
+
+/* =========================
+   OPENED STATE
+========================= */
+
+.open .flap {
+    transform: rotateX(180deg);
+}
+
+.open .heart {
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        scale(.3);
+}
+
+.open .envelope {
+    transform:
+        translateY(125px)
+        scale(.9);
+
+    opacity: .12;
+
+    pointer-events: none;
+}
+
+.open .letter {
+    opacity: 1;
+
+    z-index: 30;
+
+    transform:
+        translateX(-50%)
+        translateY(-65px);
+}
+
+.open .hint {
+    opacity: 0;
+}
+
+
+/* =========================
+   CONTINUE
+========================= */
+
+.continue {
+    margin-top: 20px;
+
+    padding: 12px 28px;
+
+    border:
+        1px solid rgba(255,255,255,.3);
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: .4s;
+}
+
+.open .continue {
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+.continue:hover {
+    transform: translateY(-3px);
+
+    background:
+        rgba(220,140,200,.15);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    position: fixed;
+
+    bottom: 15px;
+
+    left: 0;
+
+    width: 100%;
+
+    text-align: center;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    opacity: .3;
+
+    z-index: 50;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 22px 20px;
+    }
+
+    .logo {
+        font-size: 11px;
+
+        letter-spacing: 2px;
+    }
+
+    .page-number {
+        font-size: 9px;
+    }
+
+    main {
+        padding-top: 20px;
+    }
+
+    .eyebrow {
+        font-size: 8px;
+
+        letter-spacing: 2px;
+    }
+
+    h1 {
+        font-size: 48px;
+
+        margin-bottom: 30px;
+    }
+
+    .envelope-stage {
+        width: 300px;
+
+        height: 230px;
+    }
+
+    .envelope {
+        width: 300px;
+
+        height: 170px;
+    }
+
+    .letter {
+        width: 260px;
+
+        height: 280px;
+
+        padding: 21px;
+    }
+
+    .letter p {
+        font-size: 11px;
+
+        line-height: 1.5;
+    }
+
+    .heart {
+        width: 50px;
+
+        height: 50px;
+
+        top: 60px;
+    }
+
+    .open .letter {
+        transform:
+            translateX(-50%)
+            translateY(-45px);
+    }
+
+}
+.continue {
+    display: inline-block !important;
+    margin-top: 25px !important;
+    padding: 13px 30px !important;
+
+    border: 1px solid rgba(255,255,255,.35) !important;
+    border-radius: 30px !important;
+
+    background: rgba(255,255,255,.06) !important;
+
+    color: white !important;
+    text-decoration: none !important;
+
+    font-family: Arial, sans-serif !important;
+    font-size: 12px !important;
+    letter-spacing: 2px !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+
+    position: relative !important;
+    z-index: 100 !important;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="stars"></div>
+
+
+<header>
+
+    <div class="logo">
+        LOVE UNIVERSE
+    </div>
+
+    <div class="page-number">
+        05 / 10
+    </div>
+
+</header>
+
+
+<main>
+
+
+    <div class="eyebrow">
+        ✦ A MESSAGE FROM MY HEART ✦
+    </div>
+
+
+    <h1>
+        A little letter<br>
+        <span>for you.</span>
+    </h1>
+
+
+    <div
+        class="envelope-stage"
+        id="letterStage"
+    >
+
+
+        <!-- LETTER -->
+
+        <div class="letter">
+
+            <h2>
+                To you, ♡
+            </h2>
+
+            <p>
+                I don't know exactly when you became
+                such an important part of my life.
+            </p>
+
+            <p>
+                Maybe it happened somewhere between
+                our random conversations, silly laughs
+                and little moments.
+            </p>
+
+            <p>
+                Somehow, you became someone who can
+                make an ordinary day feel special.
+            </p>
+
+            <p>
+                And if our story is a book, I hope this
+                is only the beginning of many beautiful
+                chapters.
+            </p>
+
+            <div class="signature">
+                With all my heart,<br>
+                Yours ♡
+            </div>
+
+        </div>
+
+
+        <!-- ENVELOPE -->
+
+        <div
+            class="envelope"
+            id="envelope"
+        >
+
+            <div class="flap"></div>
+
+            <div class="front"></div>
+
+            <div class="heart">
+                ♥
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="hint">
+        ✦ CLICK THE ENVELOPE ✦
+    </div>
+
+
+    <a
+        href="page6.html"
+        class="continue"
+    >
+        Continue →
+    </a>
+
+
+</main>
+
+
+<footer>
+    LOVE UNIVERSE &nbsp; ∞
+</footer>
+
+
+<script>
+
+const envelope =
+    document.getElementById("envelope");
+
+const stage =
+    document.getElementById("letterStage");
+
+
+envelope.onclick = function () {
+
+    stage.classList.add("open");
+
+};
+
+</script>
+
+
+</body>
+
+</html>

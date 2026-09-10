@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Love Universe - Forever</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            overflow: hidden;
+
+            background:
+                radial-gradient(circle at center, #5c1b68 0%, transparent 35%),
+                radial-gradient(circle at 20% 80%, #361052 0%, transparent 35%),
+                radial-gradient(circle at 80% 20%, #6b174f 0%, transparent 35%),
+                #0c0015;
+
+            color: white;
+            font-family: Georgia, serif;
+            text-align: center;
+        }
+
+        /* Stars */
+
+        .star {
+            position: fixed;
+            color: white;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        .s1 { top: 10%; left: 12%; font-size: 18px; }
+        .s2 { top: 20%; right: 15%; font-size: 12px; animation-delay: .5s; }
+        .s3 { top: 70%; left: 8%; font-size: 14px; animation-delay: 1s; }
+        .s4 { bottom: 12%; right: 13%; font-size: 18px; animation-delay: 1.5s; }
+        .s5 { top: 45%; right: 7%; font-size: 11px; animation-delay: .8s; }
+        .s6 { bottom: 30%; left: 20%; font-size: 10px; animation-delay: 1.2s; }
+
+        @keyframes twinkle {
+            from {
+                opacity: .2;
+                transform: scale(.7);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        /* Header */
+
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+
+            padding: 25px 40px;
+
+            display: flex;
+            justify-content: space-between;
+
+            color: #e8c9ef;
+            font-size: 13px;
+            letter-spacing: 3px;
+        }
+
+        /* Main */
+
+        .container {
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px;
+        }
+
+        .small {
+            color: #e8a4dc;
+            letter-spacing: 4px;
+            font-size: 12px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            margin: 0;
+
+            font-size: clamp(42px, 8vw, 80px);
+            font-weight: normal;
+            line-height: 1.05;
+        }
+
+        h1 span {
+            color: #ff9fdf;
+            font-style: italic;
+        }
+
+        .line {
+            width: 90px;
+            height: 1px;
+
+            background: #e993d3;
+
+            margin: 30px auto;
+            box-shadow: 0 0 15px #e993d3;
+        }
+
+        .message {
+            max-width: 600px;
+
+            color: #dbc6df;
+
+            font-size: 17px;
+            line-height: 1.9;
+        }
+
+        /* Big Heart */
+
+        .heart {
+            margin: 35px 0 20px;
+
+            font-size: 90px;
+
+            filter:
+                drop-shadow(0 0 15px #ff75cf)
+                drop-shadow(0 0 45px #c64d9e);
+
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        /* Forever */
+
+        .forever {
+            color: #f2b5e3;
+            font-size: 22px;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        /* Final Button */
+
+        .button {
+            display: inline-block;
+
+            margin-top: 35px;
+
+            padding: 14px 32px;
+
+            border: 1px solid #e99bdd;
+            border-radius: 30px;
+
+            color: white;
+            text-decoration: none;
+
+            background: rgba(255,255,255,.04);
+
+            letter-spacing: 1px;
+
+            transition: .4s;
+        }
+
+        .button:hover {
+            background: #c54d9f;
+
+            box-shadow:
+                0 0 20px #d75bb0,
+                0 0 50px rgba(215,91,176,.5);
+
+            transform: translateY(-4px);
+        }
+
+        /* Floating Hearts */
+
+        .floating-heart {
+            position: fixed;
+
+            bottom: -30px;
+
+            font-size: 18px;
+
+            opacity: 0;
+
+            animation: floatUp 7s linear infinite;
+        }
+
+        .h1 {
+            left: 15%;
+            animation-delay: 1s;
+        }
+
+        .h2 {
+            left: 35%;
+            animation-delay: 3s;
+        }
+
+        .h3 {
+            left: 60%;
+            animation-delay: 5s;
+        }
+
+        .h4 {
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        @keyframes floatUp {
+
+            0% {
+                bottom: -30px;
+                opacity: 0;
+                transform: translateX(0) scale(.7);
+            }
+
+            20% {
+                opacity: .8;
+            }
+
+            80% {
+                opacity: .8;
+            }
+
+            100% {
+                bottom: 110%;
+                opacity: 0;
+                transform: translateX(40px) scale(1.4);
+            }
+        }
+
+        /* Mobile */
+
+        @media(max-width:600px) {
+
+            header {
+                padding: 20px;
+            }
+
+            .message {
+                font-size: 15px;
+            }
+
+            .heart {
+                font-size: 70px;
+            }
+
+            .forever {
+                font-size: 19px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Stars -->
+
+    <div class="star s1">✦</div>
+    <div class="star s2">✧</div>
+    <div class="star s3">✦</div>
+    <div class="star s4">✧</div>
+    <div class="star s5">✦</div>
+    <div class="star s6">✧</div>
+
+    <!-- Floating Hearts -->
+
+    <div class="floating-heart h1">💗</div>
+    <div class="floating-heart h2">♡</div>
+    <div class="floating-heart h3">💗</div>
+    <div class="floating-heart h4">♡</div>
+
+    <!-- Header -->
+
+    <header>
+        <div>LOVE UNIVERSE</div>
+        <div>10 / 10</div>
+    </header>
+
+    <!-- Final Page -->
+
+    <main class="container">
+
+        <div class="small">
+            ✦ THIS ISN'T THE END ✦
+        </div>
+
+        <h1>
+            My favorite<br>
+            <span>universe is you.</span>
+        </h1>
+
+        <div class="line"></div>
+
+        <p class="message">
+            If I could go back and live every moment again,
+            I wouldn't change a single thing.
+
+            <br><br>
+
+            Because every little moment,
+            every smile,
+            every memory...
+
+            somehow led me to you. 💗
+        </p>
+
+        <div class="heart">
+            ❤️
+        </div>
+
+        <div class="forever">
+            And if forever exists...
+            <br>
+            I hope it looks like us. ∞
+        </div>
+
+        <a href="index.html" class="button">
+            Start Our Universe Again ✨
+        </a>
+
+    </main>
+
+</body>
+</html>

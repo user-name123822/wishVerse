@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Love Universe</title>
+</head>
+
+<body style="margin:0; background:#090414; color:white; text-align:center; font-family:Georgia,serif; min-height:100vh;">
+
+    <div style="
+        min-height:100vh;
+        background:radial-gradient(circle at center,#40145f,#17082b 55%,#090414);
+        padding-top:1px;
+    ">
+
+        <div style="
+            display:flex;
+            justify-content:space-between;
+            padding:30px 7%;
+            font-family:Arial;
+            font-size:12px;
+            letter-spacing:3px;
+            color:#d8b7e8;
+        ">
+            <span>LOVE UNIVERSE</span>
+            <span>07 / 10</span>
+        </div>
+
+
+        <div style="margin-top:70px;">
+
+            <div style="
+                color:#d99aff;
+                font-family:Arial;
+                font-size:11px;
+                letter-spacing:4px;
+            ">
+                ✦ A LITTLE QUESTION ✦
+            </div>
+
+
+            <h1 style="
+                font-size:60px;
+                font-weight:normal;
+                line-height:1.1;
+                margin:20px;
+            ">
+                One little<br>
+                <i style="color:#efa5ff;">question.</i>
+            </h1>
+
+
+            <p id="question" style="
+                color:#cbb8d5;
+                font-family:Arial;
+                font-size:15px;
+                margin-top:25px;
+            ">
+                If you had to choose again...<br><br>
+                would you choose <b style="color:#ffabe9;">us?</b> 💗
+            </p>
+
+
+            <div style="
+                margin:40px auto;
+                width:100px;
+                height:100px;
+                border-radius:50%;
+                background:#38104f;
+                border:1px solid #d979e9;
+                box-shadow:0 0 25px #bd5bd8, 0 0 60px #682b7a;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-size:45px;
+                color:#ffafe8;
+            ">
+                ♥
+            </div>
+
+
+            <div>
+
+                <button
+                    id="yes"
+                    onclick="yes()"
+                    style="
+                        padding:14px 30px;
+                        margin:8px;
+                        border-radius:30px;
+                        border:1px solid #e99bdd;
+                        background:#54165b;
+                        color:white;
+                        cursor:pointer;
+                        font-size:14px;
+                    "
+                >
+                    YES ❤️
+                </button>
+
+
+                <button
+                    id="no"
+                    onclick="no()"
+                    style="
+                        padding:14px 30px;
+                        margin:8px;
+                        border-radius:30px;
+                        border:1px solid #8c7895;
+                        background:#21152b;
+                        color:#ddd;
+                        cursor:pointer;
+                        font-size:14px;
+                    "
+                >
+                    NO 🙃
+                </button>
+
+            </div>
+
+
+            <div id="result" style="
+                margin-top:30px;
+                color:#e7c7ed;
+                font-size:16px;
+                line-height:1.8;
+                min-height:60px;
+            ">
+            </div>
+
+
+            <a
+                id="next"
+                href="page8.html"
+                style="
+                    display:none;
+                    color:white;
+                    text-decoration:none;
+                    font-family:Arial;
+                    font-size:13px;
+                    letter-spacing:2px;
+                    border:1px solid #d47ac8;
+                    padding:13px 27px;
+                    border-radius:30px;
+                "
+            >
+                Continue →
+            </a>
+
+        </div>
+
+    </div>
+
+
+<script>
+
+var clicks = 0;
+
+function no() {
+
+    clicks++;
+
+    var q = document.getElementById("question");
+    var n = document.getElementById("no");
+
+    if (clicks == 1) {
+
+        q.innerHTML =
+        "Hmm... think again 👀";
+
+        n.innerHTML =
+        "Maybe...";
+
+    }
+
+    else if (clicks == 2) {
+
+        q.innerHTML =
+        "Are you really sure? 🌙";
+
+        n.innerHTML =
+        "Okay...";
+
+    }
+
+    else {
+
+        q.innerHTML =
+        "I think you already know the answer. ♡";
+
+        n.style.display = "none";
+
+    }
+
+}
+
+
+function yes() {
+
+    document.getElementById("question").innerHTML =
+    "I knew you'd choose us. 💗";
+
+    document.getElementById("result").innerHTML =
+    "Some choices are worth making again.<br>And I would choose you. ∞";
+
+    document.getElementById("yes").style.display =
+    "none";
+
+    document.getElementById("no").style.display =
+    "none";
+
+    document.getElementById("next").style.display =
+    "inline-block";
+
+}
+
+</script>
+
+</body>
+</html>
